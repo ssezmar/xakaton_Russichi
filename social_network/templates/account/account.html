@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{user.first_name}} {{user.last_name}} {% endblock %}
+{% block style %}
+<link href="{% static 'css/account/account.css' %}" rel="stylesheet">
+<link href="{% static 'css/account/id.css' %}" rel="stylesheet">
+<link href="{% static 'css/posts/post_img.css' %}" rel="stylesheet">
+<style>
+    
+    .main-body {
+    padding: 15px;
+}
+.card {
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.gutters-sm {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+
+.gutters-sm>.col, .gutters-sm>[class*=col-] {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.mb-3, .my-3 {
+    margin-bottom: 1rem!important;
+}
+
+.bg-gray-300 {
+    background-color: #e2e8f0;
+}
+.h-100 {
+    height: 100%!important;
+}
+.shadow-none {
+    box-shadow: none!important;
+}
+
+
+.skill {
+  margin-bottom: 1em;
+  position: relative;
+  h3 {
+    color: #fff;
+    left: 1em;
+    line-height: 1;
+    position: absolute;
+    top: 1em;
+  }
+  ::-webkit-progress-value { 
+    -webkit-animation: bar-fill 2s;
+    width: 0px;
+  }
+}
+
+
+.skill-1::-webkit-progress-value {
+  background: #808000;
+}
+
+.skill-1::-moz-progress-bar {
+  background: #808000;
+}
+
+.skill-2::-webkit-progress-value {
+  background: #FF6600;
+}
+
+.skill-2::-moz-progress-bar {
+  background: #FF6600;
+}
+
+.skill-3::-webkit-progress-value {
+  background: #C3B091;
+}
+
+.skill-3::-moz-progress-bar {
+  background: #C3B091;
+}
+
+
+
+.skill-4::-webkit-progress-value {
+  background: #004DFF;
+}
+
+.skill-4::-moz-progress-bar {
+  background: #004DFF;
+}
+
+.skill-5::-webkit-progress-value {
+  background: #2874B2;
+}
+
+.skill-5::-moz-progress-bar {
+  background: #2874B2;
+}
+
+.skill-6::-webkit-progress-value {
+  background: #F70000;
+}
+
+.skill-6::-moz-progress-bar {
+  background: #F70000;
+}
+
+.skill-7::-webkit-progress-value {
+  background: #ff6b6b;
+}
+
+.skill-7::-moz-progress-bar {
+  background: #ff6b6b;
+}
+
+
+
+
+
+</style>
+{% endblock %}
+
+{% block main %}
+  {% include 'menu.html' %}
+  <div class="container">
+    <div class="main-body">
+    
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="../../media/static/image/military-soldier-svgrepo-com.svg" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>Дмитрий Романов</h4>
+                      <button class="btn btn-primary">Сгенерировать аватар</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Полное имя</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Романов Дмитрий Александрович
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Возраст</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      18
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Команда</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Медведь
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Достижения</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      Золотой значек ГТО<br>Юнармейская доблесть второй степени<br>3 участия в Параде Победы
+                    </div>
+                  </div>
+                  <hr>
+                  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Увлечения</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                        Сборка/Разборка АК-74М<br>Вольная борьба<br>Военная история
+                    </div>
+                  </div>
+                  
+                  
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <a class="btn btn-info " target="__blank" href="{% url 'account:account_setting' %}">Редактировать</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-sm-15 mb-3">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h3 class="d-flex align-items-center mb-3">Показатели</h3>
+                    <h5 class="d-flex align-items-center mb-3">Разведчик</h5>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h5 class="d-flex align-items-center mb-3">Спасатель</h5>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h5 class="d-flex align-items-center mb-3">Защитник</h5>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h5 class="d-flex align-items-center mb-3">Богатырь</h5>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h5 class="d-flex align-items-center mb-3">Мероприятия</h5>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                
+              
+
+
+
+            </div>
+          </div>
+
+        </div>
+    </div>
+        
+        <!--<div class="card-columns pt-2">
+        {% for post in user_posts %}
+          <div class="card mb-2 mt-2 text-white bg-dark">
+
+            {% with total_likes=post.post_like.count users_like=post.post_like.all total_dislikes=post.post_dislike.count users_dislike=post.post_dislike.all%}
+
+            {% if post.post_image %}
+              <img class="card-img-top" src="{{ post.post_image.url }}" alt="{{ post.post_title }}">
+            {% endif %}
+            {% if post.post_image_url %}
+              <img class="card-img-top" src="{{ post.post_image_url }}" alt="{{ post.post_title }}">
+            {% endif %}
+              <div class="card-body">
+                <div class="wordwrap textowerflow">
+                  {% if post.post_title %}
+                    <h4 class="card-title">{{ post.post_title }}</h4>
+                  {% endif %}
+                  <p class="card-text">
+                    {{ post.post_text|linebreaks|urlizetrunc:30|truncatewords_html:25 }}
+
+                  </p>
+                </div>
+                <strong><time>{{ post.post_time }}</time></strong>
+
+              <p>
+                {% if post.post_comments.count > 0 %}
+                  <a href="{% url 'posts:post' post.id %}" id="comment{{ post.id }}"  class="btn btn-info float-left mr-2">
+                    <img id="comment_img{{ post.id }}" src="{{ MEDIA_URL }}static/image/comment.png" alt="comment" width="23px">
+                    <strong id="comment_val{{ post.id }}">{{post.post_comments.count}}</strong>
+                  </a>
+                {% else %}
+                  <a href="{% url 'posts:post' post.id %}" id="comment{{ post.id }}"  class="btn btn-secondary float-left mr-2">
+                    <img id="comment_img{{ post.id }}" src="{{ MEDIA_URL }}static/image/comment.png" alt="comment" width="23px">
+                    <strong id="comment_val{{ post.id }}">{{post.post_comments.count}}</strong>
+                  </a>
+                {% endif %}
+
+                {% if request.user in users_dislike %}
+                  <a href="#" id="dislike_block{{ post.id }}"  class="btn btn-danger float-right ml-2" data-action="undislike" data-id="{{ post.id }}">
+                    <img id="dislike_img{{ post.id }}" src="{{ MEDIA_URL }}static/image/dislike.png" alt="dislike" width="20px">
+                    <strong id="dislike_val{{ post.id }}">{{total_dislikes}}</strong>
+                  </a>
+                {% else %}
+                  <a href="#" id="dislike_block{{ post.id }}"  class="btn btn-secondary float-right ml-2" data-action="dislike" data-id="{{ post.id }}">
+                    <img id="dislike_img{{ post.id }}" src="{{ MEDIA_URL }}static/image/dislike.png" alt="dislike" width="20px">
+                    <strong id="dislike_val{{ post.id }}">{{total_dislikes}}</strong>
+                  </a>
+                {% endif %}
+
+                {% if request.user in users_like %}
+                  <a href="#" id="like_block{{ post.id }}" class="btn btn-success float-right ml-2" data-action="unlike" data-id="{{ post.id }}">
+                    <img id="like_img{{ post.id }}" src="{{ MEDIA_URL }}static/image/like.png" alt="like" width="20px">
+                    <strong id="like_val{{ post.id }}">{{total_likes}}</strong>
+                  </a>
+                {% else %}
+                  <a href="#" id="like_block{{ post.id }}" class="btn btn-secondary float-right ml-2" data-action="like" data-id="{{ post.id }}">
+                    <img id="like_img{{ post.id }}" src="{{ MEDIA_URL }}static/image/like.png" alt="like" width="20px">
+                    <strong id="like_val{{ post.id }}">{{total_likes}}</strong>
+                  </a>
+                {% endif %}
+
+                <br>
+                <br>
+                <a href="{% url 'posts:delete_post' post.id %}" class="btn btn-sm btn-primary float-left w-49">Удалить</a>
+                <a href="{% url 'posts:edit_post' post.id %}" class="btn btn-sm btn-primary float-right w-49">Редактировать</a>
+                <br>
+              </p>
+            </div>
+          </div>
+          {% endwith %}
+          <script type="text/javascript">
+
+            $('#like_block{{ post.id }}').on('click', function(e){
+              e.preventDefault();
+              $.post(
+                '{% url "posts:like_or_dislike" %}',
+                {id: $(this).data('id'),action: $(this).data('action')},
+                function(data){
+                  if (data['status'] == 'ok'){
+                    var previous_action = $('#like_block{{ post.id }}').data('action');
+                    var dislike_previous_action = $('#dislike_block{{ post.id }}').data('action');
+                    // Изменяем переменную действия.
+                    $('#like_block{{ post.id }}').data('action', previous_action == 'like' ?'unlike' : 'like');
+                    $('#dislike_block{{ post.id }}').data('action', 'dislike')
+                    // Изменяем цвет ссылки.
+                    $('#like_block{{ post.id }}').attr('class', previous_action == 'like' ? 'btn btn-success float-right ml-2' : 'btn btn-secondary float-right ml-2');
+                    $('#dislike_block{{ post.id }}').attr('class', 'btn btn-secondary float-right ml-2');
+                    //$('a.like').text(previous_action == 'like' ? 'Unlike' : 'Like');
+                    // Обновляем общее количество лайков.
+                    var previous_likes = parseInt($('#like_val{{ post.id }}').text());
+                    $('#like_val{{ post.id }}').text(previous_action == 'like' ? previous_likes + 1 : previous_likes - 1);
+                    var previous_dislikes = parseInt($('#dislike_val{{ post.id }}').text());
+                    $('#dislike_val{{ post.id }}').text(dislike_previous_action == 'undislike' ? previous_dislikes - 1 : previous_dislikes );
+                  }
+                });
+              });
+
+              $('#dislike_block{{ post.id }}').on('click', function(e){
+                e.preventDefault();
+                $.post(
+                  '{% url "posts:like_or_dislike" %}',
+                  {id: $(this).data('id'),action: $(this).data('action')},
+                  function(data){
+                    if (data['status'] == 'ok'){
+                      var previous_action = $('#dislike_block{{ post.id }}').data('action');
+                      var like_previous_action = $('#like_block{{ post.id }}').data('action');
+                      // Изменяем переменную действия.
+                      $('#dislike_block{{ post.id }}').data('action', previous_action == 'dislike' ?'undislike' : 'dislike');
+                      $('#like_block{{ post.id }}').data('action', 'like')
+                      // Изменяем цвет ссылки.
+                      $('#dislike_block{{ post.id }}').attr('class', previous_action == 'dislike' ? 'btn btn-danger float-right ml-2' : 'btn btn-secondary float-right ml-2');
+                      $('#like_block{{ post.id }}').attr('class', 'btn btn-secondary float-right ml-2');
+                      //$('a.like').text(previous_action == 'like' ? 'Unlike' : 'Like');
+                      // Обновляем общее количество лайков.
+                      var previous_dislikes = parseInt($('#dislike_val{{ post.id }}').text());
+                      $('#dislike_val{{ post.id }}').text(previous_action == 'dislike' ? previous_dislikes + 1 : previous_dislikes - 1);
+                      var previous_likes = parseInt($('#like_val{{ post.id }}').text());
+                      $('#like_val{{ post.id }}').text(like_previous_action == 'unlike' ? previous_likes - 1 : previous_likes );
+                    }
+                  });
+                });
+            </script>
+        {% endfor %}
+        </div>
+        <nav aria-label="post-pagination">
+          <ul class="pagination pagination-lg justify-content-center">
+            {% if posts.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ posts.previous_page_number }}">Назад</a>
+              </li>
+            {% endif %}
+            {% if posts.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ posts.next_page_number }}">Предыдущие</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+      <div class="col-md-2 sidenav">
+
+      </div>
+    </div>
+  </div>
+
+<script src="{% static 'js/account/create_post.js' %}" charset="utf-8">
+</script> -->
+
+{% endblock %}

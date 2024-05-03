@@ -1,0 +1,475 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Рейтинг команд {% endblock %}
+{% block style %}
+<link href="{% static 'css/dialogs/messages.css' %}" rel="stylesheet">
+<style media="screen">
+    @import url('https://fonts.googleapis.com/css?family=Abel');
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+.card {
+  width: 700px;
+  height: 250px;
+  background-color: #fff;
+  background: linear-gradient(#f8f8f8, #fff);
+  
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  margin: 1.5rem;
+  box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.3);
+}
+
+.card h1 {
+  text-align: center;
+}
+
+.card .additional {
+  position: absolute;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(#de9c5e, #eeac6e);
+  transition: width 0.4s;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.card.green .additional {
+  background: linear-gradient(#929dbc, #a2b6cc);
+}
+.card.purple .additional {
+  background: linear-gradient(#ab92bc, #bba2cc);
+}
+.card.gray .additional {
+  background: linear-gradient(#92bc99, #a2cca2);
+}
+
+
+.card:hover .additional {
+  width: 100%;
+  border-radius: 0 5px 5px 0;
+}
+
+.card .additional .user-card {
+  width: 150px;
+  height: 100%;
+  position: relative;
+  float: left;
+}
+
+.card .additional .user-card::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10%;
+  right: -2px;
+  height: 80%;
+  border-left: 2px solid rgba(0,0,0,0.025);
+}
+
+.card .additional .user-card .level,
+.card .additional .user-card .points {
+  top: 15%;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 0.75em;
+  font-weight: bold;
+  background: rgba(0,0,0,0.15);
+  padding: 0.125rem 0.75rem;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.card .additional .user-card .points {
+  top: 85%;
+}
+
+.card .additional .user-card svg {
+  top: 50%;
+}
+
+.card .additional .more-info {
+  width: 500px;
+  float: left;
+  position: absolute;
+  left: 150px;
+  height: 100%;
+}
+
+.card .additional .more-info h1 {
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.card.green .additional .more-info h1 {
+  color: #22314c;
+}
+
+.card.purple .additional .more-info h1 {
+  color: #40224c;
+}
+.card.gray .additional .more-info h1 {
+  color: #234c22;
+}
+.card.red .additional .more-info h1 {
+  color: #4c2c22;
+}
+
+.card .additional .coords {
+  margin: 0 1rem;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.card.green .additional .coords {
+  color: #323a5c;
+}
+
+.card.purple .additional .coords {
+  color: #4b325c;
+}
+
+
+.card.gray .additional .coords {
+  color: #325c3d;
+}
+
+.card.red .additional .coords {
+  color: #5c3f32;
+}
+
+.card .additional .coords span + span {
+  float: right;
+}
+
+.card .additional .stats {
+  font-size: 2rem;
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  top: auto;
+  color: #fff;
+}
+
+.card.green .additional .stats {
+  color: #32355c;
+}
+
+.card.purple .additional .stats {
+  color: #49325c;
+}
+
+.card.gray .additional .stats {
+    color: #325c39;
+}
+
+.card.red .additional .stats {
+  color: #5c3f32;
+}
+
+.card .additional .stats > div {
+  flex: 1;
+  text-align: center;
+}
+
+.card .additional .stats i {
+  display: block;
+}
+
+.card .additional .stats div.title {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.card .additional .stats div.value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+}
+
+.card .additional .stats div.value.infinity {
+  font-size: 2.5rem;
+}
+
+.card .general {
+  width: 500px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 1rem;
+  padding-top: 0;
+}
+
+.card .general .more {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 0.9em;
+}
+</style>
+{% endblock %}
+{% block main %}
+{% include 'menu.html' %}
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-md-1 text-left"></div>
+<div class="col-md-5 text-left">
+    <div class="card red">
+        <div class="additional">
+          <div class="user-card">
+            <div class="level center">
+              МЕДВЕДЬ
+            </div>
+            <div class="points center">
+              2062 очков
+            </div>
+            <img src="../../media/static/image/bear.jpeg" alt="" width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" class="center">
+            
+          </div>
+          <div class="more-info">
+            <h1>МЕДВЕДЬ</h1>
+            <div class="coords">
+              <span>Медведь</span>
+              <span>30 курсантов</span>
+            </div>
+            <div class="coords">
+              
+              
+            </div>
+            <div class="stats">
+              <div>
+                <div class="title">Разведчик</div>
+                <i class="fa fa-trophy"></i>
+                <div class="value">453</div>
+              </div>
+              <div>
+                <div class="title">Спасатель</div>
+                <i class="fa fa-gamepad"></i>
+                <div class="value">420</div>
+              </div>
+              <div>
+                <div class="title">Защитник</div>
+                <i class="fa fa-group"></i>
+                <div class="value">316</div>
+              </div>
+              <div>
+                <div class="title">Богатырь</div>
+                <i class="fa fa-group"></i>
+                <div class="value">372</div>
+              </div>
+              
+              <div>
+                <div class="title">Мероприятия</div>
+                <i class="fa fa-group"></i>
+                <div class="value">501</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="general">
+          <h1>МЕДВЕДЬ</h1>
+          <p>Группа курсантов с названием «Медведь» представляет собой команду, объединенную общей целью и духом сотрудничества. Участники этой группы стремятся к развитию физических и боевых навыков, укреплению дисциплины и взаимопонимания. Группа «Медведь» отличается высокой сплоченностью, готовностью к совместным действиям и стремлением к достижению поставленных целей.</p>
+          
+        </div>
+  </div>
+
+    <div class="card purple">
+            <div class="additional">
+            <div class="user-card">
+                <div class="level center">
+                ЯСТРЕБ
+                </div>
+                <div class="points center">
+                1844 очков
+                </div>
+                <img src="../../media/static/image/Hawk.jpeg" alt="" width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" class="center">
+                
+            </div>
+            <div class="more-info">
+                <h1>ЯСТРЕБ</h1>
+                <div class="coords">
+                <span>ЯСТРЕБ</span>
+                
+                </div>
+                <div class="coords">
+                
+                <span>30 курсантов</span>
+                </div>
+                <div class="stats">
+                <div>
+                    <div class="title">Разведчик</div>
+                    <i class="fa fa-trophy"></i>
+                    <div class="value">504</div>
+                </div>
+                <div>
+                    <div class="title">Спасатель</div>
+                    <i class="fa fa-gamepad"></i>
+                    <div class="value">289</div>
+                </div>
+                <div>
+                    <div class="title">Защитник</div>
+                    <i class="fa fa-group"></i>
+                    <div class="value">460</div>
+                </div>
+                <div>
+                    <div class="title">Богатырь</div>
+                    <i class="fa fa-group"></i>
+                    <div class="value">273</div>
+                </div>
+                
+                <div>
+                    <div class="title">Мероприятия</div>
+                    <i class="fa fa-group"></i>
+                    <div class="value">318</div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="general">
+            <h1>ЯСТРЕБ</h1>
+            <p>Группа курсантов "Ястреб" представляет собой отряд стремительных и острых на подъем военных специалистов, вдохновленных величием и свободой в полете. Название отражает их скорость и непреклонность в достижении цели. Они объединены общим стремлением к преодолению любых препятствий и демонстрации выдающихся навыков в боевой подготовке. Участники группы "Ястреб" активно развивают свою физическую выносливость и тактическое мышление, что делает их неотразимыми и эффективными в любой боевой ситуации. Внутри коллектива царит высокая дисциплина и взаимопонимание, что позволяет им оперативно реагировать на вызовы и достигать поставленных целей с максимальной точностью и эффективностью.</p>
+            
+            </div>
+    </div>
+    </div>
+
+    <div class="col-md-3 text-left">
+        <div class="card gray">
+            <div class="additional">
+            <div class="user-card">
+                <div class="level center">
+                РЫСЬ
+                </div>
+                <div class="points center">
+                2266 очков
+                </div>
+                <img src="../../media/static/image/lynx.jpeg" alt="" width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" class="center">
+                
+            </div>
+            <div class="more-info">
+                <h1>РЫСЬ</h1>
+                <div class="coords">
+                <span>РЫСЬ</span>
+                
+                </div>
+                <div class="coords">
+                
+                <span>30 курсанта</span>
+                </div>
+                <div class="stats">
+                <div>
+                    <div class="title">Разведчик</div>
+                    <i class="fa fa-trophy"></i>
+                    <div class="value">560</div>
+                </div>
+                <div>
+                    <div class="title">Спасатель</div>
+                    <i class="fa fa-gamepad"></i>
+                    <div class="value">435</div>
+                </div>
+                <div>
+                    <div class="title">Защитник</div>
+                    <i class="fa fa-group"></i>
+                    <div class="value">403</div>
+                </div>
+                <div>
+                    <div class="title">Богатырь</div>
+                    <i class="fa fa-group"></i>
+                    <div class="value">397</div>
+                </div>
+                
+                <div>
+                    <div class="title">Мероприятия</div>
+                    <i class="fa fa-group"></i>
+                    <div class="value">471</div>
+                </div>
+                </div>
+            </div>
+            </div>
+            <div class="general">
+            <h1>РЫСЬ</h1>
+            <p>Группа курсантов "Рысь" представляет собой  отряд, где каждый участник стремится к абсолютному совершенству в физической и тактической подготовке. Объединенные общей целью и духом сотрудничества, они не только развивают свои навыки боевого мастерства, но и активно работают над укреплением дисциплины и взаимопонимания внутри команды. Высокая сплоченность, готовность к совместным действиям и неуклонное стремление к достижению поставленных целей делают "Рысь" сильным и эффективным коллективом, способным преодолевать любые трудности на пути к успеху.</p>
+        
+        </div>
+    </div>
+
+  <div class="card green">
+    <div class="additional">
+      <div class="user-card">
+        <div class="level center">
+          БАРС
+        </div>
+        <div class="points center">
+          2232 очков
+        </div>
+        <img src="../../media/static/image/Leopard.jpeg" alt="" width="110" height="110" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc" class="center">
+        
+      </div>
+      <div class="more-info">
+        <h1>БАРС</h1>
+        <div class="coords">
+          <span>БАРС</span>
+          
+        </div>
+        <div class="coords">
+          
+          <span>30 курсанта</span>
+        </div>
+        <div class="stats">
+          <div>
+            <div class="title">Разведчик</div>
+            <i class="fa fa-trophy"></i>
+            <div class="value">522</div>
+          </div>
+          <div>
+            <div class="title">Спасатель</div>
+            <i class="fa fa-gamepad"></i>
+            <div class="value">388</div>
+          </div>
+          <div>
+            <div class="title">Защитник</div>
+            <i class="fa fa-group"></i>
+            <div class="value">350</div>
+          </div>
+          <div>
+            <div class="title">Богатырь</div>
+            <i class="fa fa-group"></i>
+            <div class="value">500</div>
+          </div>
+          
+          <div>
+            <div class="title">Мероприятия</div>
+            <i class="fa fa-group"></i>
+            <div class="value">472</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="general">
+      <h1>БАРС</h1>
+      <p>Группа курсантов "Барс" представляет собой отряд  бойцов, обладающих грациозностью и силой хищника, послужившего вдохновением для их названия. Они объединены не только общей целью и духом сотрудничества, но и стремлением к достижению совершенства в каждом своем действии. Участники группы "Барс" активно развивают свои физические и боевые навыки, нацеленные на эффективное выполнение задач в любых условиях. Подобно своему названию, они проявляют гибкость и готовность к быстрым и точным действиям, сохраняя при этом высокий уровень дисциплины и взаимопонимания внутри команды. Группа "Барс" выделяется не только своей сплоченностью и готовностью к совместным действиям, но и стремлением к выдающимся результатам в достижении поставленных целей.</p>
+      
+    </div>
+
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+{% endblock %}

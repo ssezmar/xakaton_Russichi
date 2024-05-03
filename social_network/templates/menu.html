@@ -1,0 +1,74 @@
+{% block style %}
+<style>
+.navbar{
+    background-color: rgb(31, 24, 20);
+}
+*{ margin:0; padding:0; }
+
+ul{ display:inline-block; text-align:center; height:50px; overflow:hidden; }
+ul li a{ letter-spacing:0px; text-decoration:none; text-transform:uppercase; color:#FFF; }
+ul li{ float:left; height:100%; list-style:none; margin:0 30px; }
+ul li *{ display:inline-block; font-size:1.3em; line-height:50px; }
+ul li a{ margin-top:-50px; transition:0.3s cubic-bezier(0.1, 0.1, 0.5, 1.4); }
+ul li a:hover{ margin-top:0; }
+ul li a:before{ content:attr(data-text); display:block; color:#CDF745; }
+
+</style>
+
+{% endblock %}
+
+
+{% load static %}
+
+  <nav class="navbar navbar-expand-md  sticky-top">
+    <div class="container-fluid">
+            <a href="{% url 'account:user_account' %}" class="nav-link text-"><img height="80px" class="d-block w-10 rounded" src="{{MEDIA_URL}}static/image/logo.png" href="{% url 'account:user_account' %}" alt="First slide">
+             </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          {% if request.user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'account:user_account' %}" data-text="Мой профиль" class="nav-link text-white ">Мой профиль</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'account:friends' %}" data-text="Общий рейтинг" class="nav-link text-white">Общий рейтинг <span class="badge badge-primary" id="new_friends"></span></a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'dialogs:messages' %}" data-text="Рейтинг команд" class="nav-link text-white">Рейтинг команд <span class="badge badge-primary" id="messages_count"></span></a>
+            </li>
+            
+            <li class="nav-item">
+              <a href="{% url 'registration:logout' %}" data-text="Выйти" class="nav-link text-danger">Выйти</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a href="{% url 'registration:login' %}" data-text="Войти" class="nav-link text-white">Войти</a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'registration:register' %}" data-text="Зарегистрироваться" class="nav-link text-white">Зарегистрироваться</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script src="{% static 'js/dialogs/new_messages.js' %}" charset="utf-8"></script>
+  <script type="text/javascript">
+    var csrftoken = Cookies.get('csrftoken');
+      function csrfSafeMethod(method) {
+        // Для этих методов токен не будет подставляться в заголовок.
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+    $.ajaxSetup({
+      beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+          xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+      }
+    });
+  </script>
